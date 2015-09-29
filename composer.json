@@ -1,0 +1,31 @@
+{
+    "name" : "stormdelta/latex-encoder-annotation-bundle",
+    "description" : "Latex Encoder Annotation Bundle",
+    "type" : "symfony-bundle",
+    "authors": [{
+        "name" : "Brian Gharibaan",
+        "email" : "brian@stormdelta.com"
+    }],
+    "keywords" : [
+        "latex encode encoder symfony bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+
+    },
+    "autoload" : {
+        "psr-0" : {
+            "StormDelta\\LatexEncoder\\AnnotationBundle" : ""
+        }
+    },
+    "target-dir" : "StormDelta/LatexEncoder/AnnotationBundle",
+    "repositories" : [{
+    }],
+    "extra" : {
+    "branch-alias" : {
+        "dev-master" : "v0.1"
+        }
+    }
+}
