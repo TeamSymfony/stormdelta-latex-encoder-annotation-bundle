@@ -26,24 +26,27 @@ class LatexEncoderAnnotationDriver
         $property = false;
 
         foreach ($properties as $prop) {
-            $annotation = $this->reader->getPropertyAnnotations($prop, 'StormDelta\LatexEncoder\AnnotationBundle\Annotation\LatexEncoderAnnotation');
+            $annotation = $this->reader->getPropertyAnnotations($prop, 'StormDelta\\LatexEncoder\\AnnotationBundle\\Annotation\\LatexEncoderAnnotation');
 
-            if (!empty($annotation)) {
-                $property = $prop->getName();
-            }
-        }
+            foreach ($annotation as $a) {
+                if (get_class($a) === 'StormDelta\LatexEncoder\AnnotationBundle\Annotation\LatexEncoderAnnotation') {
+                    if (!empty($annotation)) {
+                        $property = $prop->getName();
+                    }
 
-        if (!empty($property)) {
-            $property = (str_replace(' ', '', ucwords(str_replace('_', ' ', $property))));
+                    if (!empty($property)) {
+                        $property = (str_replace(' ', '', ucwords(str_replace('_', ' ', $property))));
+                        $setMethod = 'set'.($property);
+                        $getMethod = 'get'.($property);
+                        if (method_exists($entity, $setMethod) && method_exists($entity, $getMethod)) {
+                            $string = $entity->{$getMethod}();
 
-            $setMethod = 'set'.($property);
-            $getMethod = 'get'.($property);
-            if (method_exists($entity, $setMethod) && method_exists($entity, $getMethod)) {
-                $string = $entity->{$getMethod}();
+                            $encoded_string = $this->encoder->encode($string);
 
-                $encoded_string = $this->encoder->encode($string);
-
-                $entity->{$setMethod}($encoded_string);
+                            $entity->{$setMethod}($encoded_string);
+                        }
+                    }
+                }
             }
         }
 
