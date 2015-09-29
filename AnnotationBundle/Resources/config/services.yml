@@ -1,0 +1,7 @@
+services:
+    stormdelta.latexencoder.driver:
+        class: StormDelta\LatexEncoder\AnnotationBundle\Annotation\Driver\LatexEncoderAnnotationDriver
+        arguments: [@annotation_reader,@stormdelta.latexencoder.encoder]
+
+    stormdelta.latexencoder.encoder:
+        class: StormDelta\LatexEncoder\AnnotationBundle\Encoder\LatexEncoder
