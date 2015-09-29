@@ -24,10 +24,5 @@
     },
     "target-dir" : "StormDelta/LatexEncoder/AnnotationBundle",
     "repositories" : [{
-    }],
-    "extra" : {
-    "branch-alias" : {
-        "master" : "v0.1.2"
-        }
-    }
+    }]
 }
