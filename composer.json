@@ -1,5 +1,6 @@
 {
     "name" : "stormdelta/latex-encoder-annotation-bundle",
+    "minimum-stability": "dev",
     "description" : "Latex Encoder Annotation Bundle",
     "type" : "symfony-bundle",
     "authors": [{
