@@ -47,6 +47,21 @@ class LatexEncoderAnnotationDriver
                         }
                     }
                 }
+
+                if (get_class($a) === 'StormDelta\LatexEncoder\AnnotationBundle\Annotation\LatexEncoderFollowAnnotation') {
+                    if (!empty($annotation)) {
+                        $property = $prop->getName();
+                    }
+
+                    if (!empty($property)) {
+                        $property = (str_replace(' ', '', ucwords(str_replace('_', ' ', $property))));
+                        $getMethod = 'get'.($property);
+
+                        foreach ($entity->{$getMethod}() as $object) {
+                            $object = $this->encode($object);
+                        }
+                    }
+                }
             }
         }
 
