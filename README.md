@@ -69,3 +69,24 @@ class DefaultController extends Controller
     }
 }
 ```
+
+"Advanced" Usage
+----------------
+Use LatexEncoderFollowAnnotation in the entity to encode related entities
+```
+//src/AppBundle/Entity/LatexEntity.php
+
+namespace AppBundle\Entity\LatexEntity;
+
+...
+use StormDelta\LatexEncoder\AnnotationBundle\Annotation\LatexEncoderFollowAnnotation as LatexFollow;
+
+class LatexEntity
+{
+    /**
+     * @ORM\OneToMany(targetEntity="...")
+     * @LatexFollow
+     */
+    $variables;
+}
+```
